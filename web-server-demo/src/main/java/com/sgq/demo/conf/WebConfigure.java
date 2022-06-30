@@ -39,6 +39,9 @@ public class WebConfigure implements WebFluxConfigurer
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry)
 	{
+		registry.addResourceHandler("/pictures/**")
+			.addResourceLocations("file:/home/Mickey1992/Photos/")
+			.setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
 		registry.addResourceHandler("**")
 			.addResourceLocations("file:public/")
 			.setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS));
