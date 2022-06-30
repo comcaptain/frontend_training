@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+#website-header {
+    position: relative;
+    height: 25px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Alex Brush', cursive;
+    font-size: 25px;
+    padding: 10px;
+    padding-left: 60px;
+    border-bottom: 1px solid silver;
+    box-shadow: 0 3px 7px 0px #cdcdcd;
+    margin-bottom: 10px;
+}
+
+
+#website-header::before {
+    content: "";
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    background-image: url("../../images/logo.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+}
+
+.red {
+    color: #bb0e22;
+}
+
+.blue {
+    color: #033c8f;
+}
+
+#website-header>span {
+    margin-right: 5px;
+}
