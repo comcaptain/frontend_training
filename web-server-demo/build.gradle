@@ -30,7 +30,33 @@ task cleanPublic(type: Exec) {
     commandLine "bash", "-c", "rm -rf public/*"
 }
 
-task copyToPublic(type: Copy, dependsOn: [cleanPublic, buildFrontEnd]) {
+task cleanDist(type: Exec) {
+    commandLine "bash", "-c", "rm -rf dist/*"
+}
+
+task copyFrontendBuildToPublic(type: Copy, dependsOn: [cleanPublic, buildFrontEnd]) {
     from "frontend/build"
     into "public"
 }
+
+task copyFrontendBuildToDist(type: Copy, dependsOn: [cleanPublic, buildFrontEnd]) {
+    from "frontend/build"
+    into "dist/public"
+}
+
+task copyJarToDist(type: Copy, dependsOn: [bootJar]) {
+    from "build/libs"
+    into "dist/libs"
+}
+
+task copyShellToDist(type: Copy, dependsOn: [bootJar]) {
+    from "shell"
+    into "dist"
+}
+
+task dist(type: Zip, dependsOn: [clean, cleanDist, copyJarToDist, copyFrontendBuildToDist, copyShellToDist]) {
+    from 'dist/'
+    include '**'
+    archiveName 'web-server-demo.zip'
+}
+

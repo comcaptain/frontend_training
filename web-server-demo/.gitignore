@@ -16,3 +16,4 @@ gradle-app.setting
 
 public/
 frontend/node_modules
+dist/
