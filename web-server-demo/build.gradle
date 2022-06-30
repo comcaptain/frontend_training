@@ -20,3 +20,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task buildFrontEnd(type: Exec) {
+    workingDir "frontend"
+    commandLine "npm", "run", "build"
+}
+
+task cleanPublic(type: Exec) {
+    commandLine "bash", "-c", "rm -rf public/*"
+}
+
+task copyToPublic(type: Copy, dependsOn: [cleanPublic, buildFrontEnd]) {
+    from "frontend/build"
+    into "public"
+}
