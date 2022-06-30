@@ -49,7 +49,7 @@ task copyJarToDist(type: Copy, dependsOn: [bootJar]) {
     into "dist/libs"
 }
 
-task copyShellToDist(type: Copy, dependsOn: [bootJar]) {
+task copyShellToDist(type: Copy) {
     from "shell"
     into "dist"
 }
